@@ -1,8 +1,9 @@
-package com.example.myprojectmaps;
+package com.example.Myprojectmaps;
 
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Pangkalpinang, BangkaBelitung.
+     * we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -42,5 +43,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng Pangkalpinang = new LatLng(-2.133333, 106.116667);
         mMap.addMarker(new MarkerOptions().position(Pangkalpinang).title("Marker in Pangkalpinang"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Pangkalpinang));
+    }
+    public void onZoom(View view){
+        if (view.getId() == R.id.zoomin){
+            mMap.animateCamera(CameraUpdateFactory.zoomIn());
+        }
+        if(view.getId() == R.id.zoomout){
+            mMap.animateCamera(CameraUpdateFactory.zoomOut());
+        }
+
     }
 }
